@@ -11,8 +11,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ComponentScan(
         "com.uniandes.sgc.*"
 )
-@EnableAutoConfiguration
-@EnableAsync
 public class sgcApplication {
     public static void main(final String[] args) {
 

@@ -2,6 +2,8 @@ package com.uniandes.sgc.controllers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.uniandes.sgc.models.Sismo;
+import com.uniandes.sgc.services.SismoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +20,10 @@ import java.io.IOException;
 @Controller
 @EnableAutoConfiguration
 public class SismoController {
-		
-	
-	//private ReceptionerService receptionerService;
+
+
+	@Autowired
+	private SismoService sismoService;
 		
 	/**
 	 *
@@ -31,6 +34,7 @@ public class SismoController {
     @ResponseBody
     String encode(@RequestBody Sismo sismo)  {
 
+		sismoService.saveSismo(sismo);
     	return "Sismo registrado magnitud:"+sismo.getMagnitud()+" latitud: "+sismo.getLatitud()+" longitud: "+ sismo.getLongitud();
     }
 }
